@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App - Capstone Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- SVG Background Elements -->
+    <div class="svg-background">
+        <svg class="bg-svg" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.1" />
+                </linearGradient>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.1" />
+                    <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.1" />
+                </linearGradient>
+            </defs>
+            <circle cx="200" cy="200" r="80" fill="url(#grad1)" class="floating-circle"/>
+            <circle cx="800" cy="300" r="60" fill="url(#grad2)" class="floating-circle"/>
+            <circle cx="150" cy="700" r="40" fill="url(#grad1)" class="floating-circle"/>
+            <circle cx="850" cy="800" r="70" fill="url(#grad2)" class="floating-circle"/>
+            <rect x="100" y="400" width="120" height="120" fill="url(#grad1)" class="floating-shape" rx="20"/>
+            <rect x="750" y="100" width="100" height="100" fill="url(#grad2)" class="floating-shape" rx="20"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>📝 To-Do List App</h1>
+            <p class="subtitle">Aplikasi CRUD lengkap dengan localStorage & fitur canggih</p>
+        </header>
+        
+        <div class="input-section">
+            <div class="input-wrapper">
+                <input type="text" id="taskInput" placeholder="Ketik tugas baru di sini..." maxlength="100">
+                <div class="char-counter">
+                    <span id="charCount">0</span>/100
+                </div>
+            </div>
+            <button id="addTaskBtn">➕ Tambah</button>
+        </div>
+        
+        <div class="stats-section">
+            <div class="stat-item">
+                <span class="stat-icon">📊</span>
+                <span id="totalTasks">0</span>
+                <span class="stat-label">Total</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">✅</span>
+                <span id="completedTasks">0</span>
+                <span class="stat-label">Selesai</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">⏳</span>
+                <span id="pendingTasks">0</span>
+                <span class="stat-label">Pending</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">📈</span>
+                <span id="progressPercent">0%</span>
+                <span class="stat-label">Progress</span>
+            </div>
+        </div>
+        
+        <div class="filter-section">
+            <button id="showAll" class="filter-btn active">🔍 Semua</button>
+            <button id="showPending" class="filter-btn">⏳ Pending</button>
+            <button id="showCompleted" class="filter-btn">✅ Selesai</button>
+            <button id="showPriority" class="filter-btn">⭐ Prioritas</button>
+        </div>
+        
+        <div class="search-section">
+            <input type="text" id="searchInput" placeholder="🔍 Cari tugas..." class="search-input">
+            <button id="clearSearch" class="clear-search-btn">🗑️</button>
+        </div>
+        
+        <ul id="taskList"></ul>
+        
+        <div class="actions-section">
+            <button id="clearCompleted" class="action-btn">🗑️ Hapus Selesai</button>
+            <button id="clearAll" class="action-btn">🗑️ Hapus Semua</button>
+        </div>
+    </div>
+
+    <!-- Task Priority Modal -->
+    <div id="priorityModal" class="modal">
+        <div class="modal-content">
+            <h3>Set Prioritas Tugas</h3>
+            <div class="priority-options">
+                <button class="priority-btn" data-priority="low">🟢 Rendah</button>
+                <button class="priority-btn" data-priority="medium">🟡 Sedang</button>
+                <button class="priority-btn" data-priority="high">🔴 Tinggi</button>
+            </div>
+            <button id="closePriorityModal" class="close-btn">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Task Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h3>Edit Tugas</h3>
+            <input type="text" id="editTaskInput" placeholder="Edit teks tugas...">
+            <div class="edit-actions">
+                <button id="saveEdit" class="save-btn">💾 Simpan</button>
+                <button id="cancelEdit" class="cancel-btn">❌ Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
